@@ -6,7 +6,9 @@ from classes.song import Song
 class TestRoom(unittest.TestCase):
     def setUp(self):
         self.room1 = Room("CodeClan Caraoke")
-        self.guest1 = Guest("Marty")
+        self.guest1 = Guest("Marty", 100)
+        self.guest2 = Guest("Kevin", 80)
+        self.guest3 = Guest("Seli", 90)
         self.song1 = Song("A Beautiful Song")
         self.song2 = Song("Moments")
 
@@ -19,6 +21,17 @@ class TestRoom(unittest.TestCase):
     def test_check_in_guest(self):
         self.room1.check_in_guest(self.guest1.name)
         self.assertEqual(1, len(self.room1.space))
+
+    def test_check_in_guest_2(self):
+        self.room1.check_in_guest(self.guest1.name)
+        self.room1.check_in_guest(self.guest2.name)
+        self.assertEqual(2, len(self.room1.space))
+
+    def test_check_in_guest_over_2(self):
+        self.room1.check_in_guest(self.guest1.name)
+        self.room1.check_in_guest(self.guest2.name)
+        self.assertEqual("Sorry. Room is full",  self.room1.check_in_guest(self.guest3.name))
+        
 
     def test_check_out_guests(self):
         self.room1.check_in_guest(self.guest1.name)

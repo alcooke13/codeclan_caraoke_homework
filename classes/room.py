@@ -9,7 +9,9 @@ class Room:
         return len(self.space)
 
     def check_in_guest(self, guest_name):
-        self.space.append(guest_name)
+        if self.check_space() < 2:
+            self.space.append(guest_name)
+        return "Sorry. Room is full"
 
     def check_out_guest(self, guest_name):
         self.space.remove(guest_name)
