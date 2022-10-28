@@ -1,9 +1,10 @@
 class Room:
     
-    def __init__(self, name):
+    def __init__(self, name, till):
         self.name = name
         self.space = []
         self.song_playlist = []
+        self.till = till
 
     def check_space(self):
         return len(self.space)
@@ -18,3 +19,6 @@ class Room:
     
     def add_song(self, song_name):
         self.song_playlist.append(song_name)
+
+    def add_to_till(self, amount):
+        self.till += amount

@@ -10,3 +10,7 @@ class TestGuest(unittest.TestCase):
 
     def test_guest_has_money(self):
         self.assertEqual(100, self.guest1.wallet)
+
+    def test_reduce_guest_money(self):
+        self.guest1.pay_fees(10)
+        self.assertEqual(90, self.guest1.wallet)
