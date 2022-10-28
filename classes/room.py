@@ -5,6 +5,7 @@ class Room:
         self.space = []
         self.song_playlist = []
         self.till = till
+        self.menu = []
 
     def check_space(self):
         return len(self.space)
@@ -22,3 +23,12 @@ class Room:
 
     def add_to_till(self, amount):
         self.till += amount
+
+    def guest_finds_favorite_song(self, song_name):
+        for song in self.song_playlist:
+            if song == song_name:
+                return "Woohoo!"
+
+    def add_food_to_menu(self, food):
+        self.menu.append(food)
+        
