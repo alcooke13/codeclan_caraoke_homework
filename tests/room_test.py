@@ -1,5 +1,4 @@
 import unittest
-from classes import food
 from classes.guest import Guest
 from classes.room import Room
 from classes.song import Song
@@ -60,3 +59,17 @@ class TestRoom(unittest.TestCase):
     def test_add_food_to_menu(self):
         self.room1.add_food_to_menu(self.food1)
         self.assertEqual(1, len(self.room1.menu))
+
+    def test_guest_fees_and_buys_food_increases_till(self): ###
+        self.guest1.pay_fees(10)
+        self.assertEqual(90, self.guest1.wallet)
+        self.guest1.total_bill_goes_up(self.food1.price)
+        self.assertEqual(10, self.guest1.total_bill)
+        self.guest1.buys_food(self.food1.name)
+        self.assertEqual(1, len(self.guest1.purchased_food))
+        self.room1.add_to_till(10)
+        self.room1.add_to_till(self.food1.price)
+        self.assertEqual(520, self.room1.till)
+        
+        
+    
